@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Merriweather", serif;
+}
+html ::-webkit-scrollbar-track{
+    background: transparent;
+}
+html ::-webkit-scrollbar-thumb{
+    background: #333;
+    border-radius: 10px;
+}
+html ::-webkit-scrollbar{
+    width: 10px;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #333, #000);
+}
+#navbar{
+    background-color: #000000;
+}
+#logo img{
+    border-radius: 10px;
+    width: 200px;
+    margin-left: 40px;
+}
+.navbar-nav{
+    margin-left: 50px;
+}
+.nav-item .nav-link{
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.nav-item .nav-link:hover{
+    background: #b98f2c;
+    border-radius: 5px;
+    color: black;
+}
+#navbar form button{
+    background: black;
+    color: white;
+    border: 1px solid white;
+}
+i{
+    color: white; 
+    font-size: 23px;
+    outline: none; 
+}
+.navbar-toggler:active {
+    border: 2px solid #885d1c;
+}
+.btn-user, 
+.search-input {
+    height: 38px;         
+    padding: 0 18px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
