@@ -70,6 +70,7 @@ i{
 /* ---------------- Modal Inicio Sesión ---------------- */
 #iniciosesion .modal-content {
     background-color: rgba(0, 0, 0, 0.5) !important;
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(4px);
 }
 .modal-backdrop.show {
@@ -83,6 +84,7 @@ input.usuario, input.password{
     width: 100%;
     box-sizing: border-box;
     padding: 12px 12px;
+    border: none;
     border: 1px solid #666;
     box-shadow: 0px 0px 15px #0003;
     background-color: #333;
@@ -95,30 +97,32 @@ input.usuario, input.password{
 .form-check-label{ 
     color: #666;
 }
-
-/* Checkbox base */
-.custom-checkbox .custom-control-input {
-    position: relative;
+/* Estilo personalizado del checkbox */
+.custom-check {
+    appearance: none;
     width: 1.2em;
     height: 1.2em;
-    cursor: pointer;
-    appearance: none;
     border: 2px solid #ccc;
     border-radius: 0.25rem;
     background-color: transparent;
-    transition: background-color 0.2s, border-color 0.2s;
-    margin: 20px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    position: relative;
 }
-.custom-checkbox .custom-control-input:hover,
-.custom-checkbox .custom-control-input:focus {
+
+/* Hover */
+.custom-check:hover {
     border-color: #666;
-    box-shadow: 0px 0px 15px #0003;
-    outline: none;
 }
-.custom-checkbox .custom-control-input:checked {
+
+/* Check marcado */
+.custom-check:checked {
     background-color: #666;
+    border-color: #666;
 }
-.custom-checkbox .custom-control-input:checked::after {
+
+/* Icono del check */
+.custom-check:checked::after {
     content: "";
     position: absolute;
     left: 0.35em;
@@ -129,6 +133,77 @@ input.usuario, input.password{
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
+
+.form_button{
+    padding: 10px 20px;
+}
+.button{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 12px;
+    border-radius: 4px;
+}
+.btn-iniciar{
+    border: none !important;
+    background:  #fcd62e !important;
+    color: black !important;
+}
+.btn-iniciar:hover{
+    background-color: #fef08a !important;
+}
+.btn-crear{
+    background: transparent !important; 
+    border: none;
+    border: 1px solid #666;
+}
+.btn-crear:hover{
+    background-color: #333 !important; 
+}
+.btn-transparente{
+    background: transparent !important; 
+    border: none !important;    
+}
+.btn-transparente:hover {
+    background-color: #333 !important;
+}
+
+/* ---------------- MODAL OLVIDASTE CONTRASEÑA ---------------- */
+
+#olvidaste_contraseña .modal-content {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: #fff;
+    backdrop-filter: blur(4px); /* Efecto glass */
+    border: none;
+}
+#olvidaste_contraseña .modal-header {
+    border-bottom: none; /* Quita la línea del modal*/
+    background-color: #222222;
+}
+#titulo h2{
+    color: #b98f2c;
+}
+#titulo p{
+    color: #999;
+}
+#olvidaste_contraseña input{
+    width: 100%;    
+    box-sizing: border-box;
+    padding: 12px 12px;
+    border: none;
+    border: 1px solid #666;
+    box-shadow: 0px 0px 15px #0003;
+    background-color: #333;
+    border-radius: 4px;
+    color: white;
+}
+#olvidaste_contraseña input:hover{
+    border: 2px solid white;
+    cursor: pointer;
+}
+#olvidaste_contraseña .modal-body {
+    background: linear-gradient(to bottom, #333, #000);
+}
+
 
 /* ---------------- Modal Registrarse ---------------- */
 #registrar .modal-content {
@@ -351,120 +426,7 @@ input.usuario, input.password{
     opacity: 0.4;
 }
 
-/* ===================================================== */
-/*                        FOOTER                         */
-/* ===================================================== */
 
-.casino-footer {
-    background: #000;
-    padding: 40px 0;
-    border-top: 2px solid #b98f2c;
-    margin-top: 60px;
-    color: #ccc;
-    text-align: center;
-}
-
-.casino-footer .footer-logo img {
-    width: 180px;
-    margin-bottom: 20px;
-    opacity: 0.9;
-}
-
-.casino-footer .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.casino-footer .footer-links li {
-    margin: 8px 0;
-}
-
-.casino-footer .footer-links a {
-    color: #fcd62e;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 15px;
-}
-
-.casino-footer .footer-links a:hover {
-    color: #fff;
-    text-shadow: 0 0 10px #fcd62e;
-}
-
-.casino-footer p {
-    margin-top: 25px;
-    font-size: 14px;
-    color: #777;
-}
-
-.casino-footer .social-icons i {
-    font-size: 25px;
-    margin: 10px;
-    transition: 0.3s;
-    color: #fcd62e;
-}
-
-.casino-footer .social-icons i:hover {
-    transform: scale(1.2);
-    color: white;
-}
-/* ============== Arregla tamaño de Footer ================== */
-
-.casino-footer {
-    background: #000;
-    padding: 40px 0 20px; /* más compacto */
-    border-top: 2px solid #b98f2c;
-    margin-top: 40px;
-    color: #ccc;
-}
-
-.footer-top {
-    padding-bottom: 20px;
-}
-
-.footer-section {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.footer-title {
-    font-size: 18px;
-    color: #fcd62e;
-    margin-bottom: 12px;
-    font-weight: bold;
-}
-
-.footer-social a i {
-    font-size: 26px;
-    margin-right: 12px;
-    color: #fcd62e;
-    transition: .3s;
-}
-
-.footer-social a i:hover {
-    color: white;
-    transform: scale(1.15);
-}
-
-.footer-bottom {
-    border-top: 1px solid #333;
-    padding-top: 15px;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.footer-bottom p {
-    margin: 0;
-    font-size: 13px;
-    color: #666;
-}
-
-/* LOGO AJUSTE */
-.footer-logo {
-    width: 170px;
-    margin-bottom: 15px;
-}
 /* Agrandado de 50% en imagenes de juegos de casino.html */
 
 .game-link {
@@ -529,4 +491,51 @@ input.usuario, input.password{
     height: 100%;
     object-fit: cover; 
     border-radius: 0.75rem;
+}
+
+/* ===================================================== */
+/*                        FOOTER                         */
+/* ===================================================== */
+
+footer{
+    width: 100%;
+    color: white;
+    background-color: black;
+    margin-top: 100px;
+}
+.footer-logo img{
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer; 
+}
+.fin{
+    color: black;
+    background-color: #b98f2c;
+}
+.social-links i{
+    font-size: 17px;
+    margin-left: 10px;
+    margin-top: 30px;
+    padding: 10px;
+    background: #b98f2c;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.social-links a {
+    text-decoration: none;
+}
+.creditos{
+    color: black;
+    margin-top: 20px;
+}
+
+.flecha{
+    position: fixed;
+    height: 50px;
+    bottom: 40px;
+    right: 50px;
+    text-align: center;
+    line-height: 50px;
 }
