@@ -1,284 +1,220 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promociones | Atlantic City</title>
-
-    <!-- Estilos base -->
+    <meta name="keywords" content="apuestas, deportes, casino online, juegos de casino, tragamonedas, slots, ruleta, blackjack, apuestas en línea, bonos de bienvenida, juegos en vivo, casino Perú">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atlantic City</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icono.ico" type="image/x-icon"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-
 <body>
-
-<div class="all-content">
-
-    <!-- ---------------- HEADER COPIADO DESDE INDEX ---------------- -->
-    <header>
-        <nav class="navbar navbar-expand-lg" id="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html" id="logo"><img src="img/logo.png" alt="logo"></a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                    <span><i class="fa-solid fa-bars"></i></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="promociones.html">Promociones</a></li>
-                        <li class="nav-item"><a class="nav-link" href="casino.html">Casino</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#deportes">Deportes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#poker">Póker</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#responsable">Juego Responsable</a></li>
-                    </ul>
-                </div>
-
-                <div class="d-flex align-items-center me-3">
-                    <input class="form-control search-input" type="text" placeholder="Buscar juegos">
-                </div>
-
-                <div class="d-flex align-items-center gap-2">
-                    <button type="button" class="btn btn-outline-light btn-user" data-bs-toggle="modal" data-bs-target="#iniciosesion">Iniciar sesión</button>
-                    <button type="button" class="btn btn-warning btn-user text-dark fw-bold" data-bs-toggle="modal" data-bs-target="#registrar">Regístrate</button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Modal Iniciar Sesión -->
-        <div class="modal fade" id="iniciosesion" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <a class="navbar-brand" href="index.html" id="logo"><img src="img/logo.png" alt="logo"></a>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+    <div class="all-content">
+        <header>
+            <nav class="navbar navbar-expand-lg" id="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html" id="logo"><img src="img/logo.png" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">                    
+                            <li class="nav-item">
+                                <a class="nav-link" href="promociones.html">Promociones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="casino.html">Casino</a>
+                            </li>                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="#deportes">Deportes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#poker">Póker</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#responsable">Juego Responsable</a>
+                            </li>                
+                        </ul>                                                
                     </div>
-
-                    <div class="modal-body">
-                        <form class="form_modal">
-                            <div class="form_input">
-                                <input class="usuario" type="text" placeholder="Usuario o correo electrónico">
+                    <div class="d-flex align-items-center me-3">
+                        <input class="form-control search-input" type="text" placeholder="Buscar juegos" aria-label="Buscar">
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button type="button" class="btn btn-outline-light btn-user" data-bs-toggle="modal" data-bs-target="#iniciosesion">Iniciar sesión</button>
+                        <!-- Modal Iniciar sesion -->
+                        <div class="modal fade" id="iniciosesion" tabindex="-1" aria-label="Iniciar sesión" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a class="navbar-brand" href="index.html" id="logo"><img src="img/logo.png" alt="logo"></a>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form_modal">
+                                            <div class="form_input">
+                                                <input class="usuario" type="text" name="usuario" id="usuario" placeholder="Usuario o correo electrónico">
+                                            </div>
+                                            <div class="form_input">
+                                                <input class="password" type="password" name="contraseña" id="contraseña_inicio_sesion" placeholder="Contraseña">
+                                            </div>
+                                            <div class="form-check d-flex align-items-center gap-2">
+                                                <input class="custom-check" type="checkbox" id="checkDefault">
+                                                <label class="form-check-label" for="checkDefault">
+                                                    Recordar contraseña
+                                                </label>
+                                            </div>
+                                            <div class="form_button">
+                                                <button class="button btn-iniciar" type="button">INICIAR SESIÓN</button>
+                                            </div>
+                                            <div class="form_button">
+                                                <button class="button btn-crear" type="button" onclick="cambiarModal('#iniciosesion', '#registrar')">CREAR CUENTA</button>
+                                            </div>
+                                            <script>
+                                            function cambiarModal(actual, siguiente){
+                                                const modalActual = bootstrap.Modal.getInstance(document.querySelector(actual));
+                                                modalActual.hide();
+                                                setTimeout(() => {
+                                                    const modalNueva = new bootstrap.Modal(document.querySelector(siguiente));
+                                                    modalNueva.show();
+                                                }, 100);
+                                            }
+                                            </script>
+                                            <div class="form_button">
+                                                <button class="button btn-transparente" type="button" data-bs-toggle="modal" data-bs-target="#olvidaste_contraseña">¿OLVIDASTE TU CONTRASEÑA?</button>
+                                            </div>
+                                        </form>
+                                    </div>                            
+                                </div>
                             </div>
-                            <div class="form_input">
-                                <input class="password" type="password" placeholder="Contraseña">
+                        </div>
+                        <!-- Modal Olvidaste Contraseña -->
+                        <div class="modal fade" id="olvidaste_contraseña" tabindex="-1" aria-label="Olvidaste contraseña" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a class="navbar-brand" href="index.html" id="logo"><img src="img/logo.png" alt="logo"></a>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form_modal">
+                                            <div class="form_input" id="titulo">
+                                                <H2>Recuperación de contraseña</H2>
+                                                <p>Para recuperar la contraseña, introduzca la dirección de correo electrónico o número telefónico con el que se registró.</p>
+                                            </div>
+                                            <div class="form_input">                                                
+                                                <input class="correo_celular" type="text" name="correo_celular" id="correo_celular" placeholder="Correo electrónico o Número telefónico">
+                                            </div>                                            
+                                            <div class="form_button">
+                                                <button class="button btn-iniciar" type="button">ENVIAR</button>
+                                            </div>
+                                        </form>
+                                    </div>                            
+                                </div>
                             </div>
-                            <div class="myTest custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" id="checkDefault">
-                                <label class="form-check-label" for="checkDefault">Recordar contraseña</label>
+                        </div>
+                        <button type="button" class="btn btn-warning btn-user text-dark fw-bold" data-bs-toggle="modal" data-bs-target="#registrar">Regístrate</button>
+                        <!-- Modal Registrar -->
+                        <div class="modal fade" id="registrar" tabindex="-1" aria-label="Regístrate" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a class="navbar-brand" href="index.html" id="logo"><img src="img/logo.png" alt="logo"></a>
+                                        <button type="button_header" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form_modal" id="formRegistro">
+                                            <div class="form_input">
+                                                <input class="nombres" type="text" name="nombres" id="nombres" placeholder="Nombres" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g,'')" required>
+                                            </div>
+                                            <div class="form_input">
+                                                <input class="primer_apellido" type="text" name="primer_apellido" id="primer_apellido" placeholder="Primer Apellido" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g,'')" required>
+                                            </div>
+                                            <div class="form_input">
+                                                <input class="segundo_apellido" type="text" name="segundo_apellido" id="segundo_apellido" placeholder="Segundo Apellido" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g,'')">
+                                            </div>
+                                            <div class="form_input d-flex gap-2 align-items-center">
+                                                <select class="form-select w-25" id="documento" name="documento" required>
+                                                    <option value="" disabled selected hidden>Documento</option>
+                                                    <option value="dni">DNI</option>
+                                                    <option value="ce">CE</option>
+                                                </select>
+                                                <input class="dni w-75" type="text" name="dni" id="dni" placeholder="Número de documento" oninput="this.value = this.value.replace(/[^0-9]/g,'')">
+                                            </div>
+                                            <div class="form_input">
+                                                <input class="fecha_nacimiento" type="text" id="fecha_nacimiento" placeholder="Fecha de Nacimiento" onfocus="this.type='date'"  required>
+                                            </div>
+                                            <script>
+                                                const modalRegistrar = document.getElementById("registrar");
+                                                const fechaInput = document.getElementById("fecha_nacimiento");
+                                                modalRegistrar.addEventListener('hidden.bs.modal', function () {
+                                                    const form = document.getElementById('formRegistro');
+                                                    form.reset();
+                                                    fechaInput.type = 'text';
+                                                });
+                                            </script>
+                                            <div class="form_input">
+                                                <input class="nacionalidad" type="text" name="nacionalidad" id="nacionalidad" placeholder="Nacionalidad">
+                                            </div>
+                                            <div class="form_input">
+                                                <input class="celular" type="text" name="celular" id="celular" placeholder="Celular" oninput="this.value = this.value.replace(/[^0-9]/g,'')" maxlength="15" required>
+                                            </div>
+                                            <div class="form_input">
+                                                <input class="correo" type="email" name="correo" id="correo" placeholder="Correo electrónico" required>
+                                            </div>
+                                            <div class="form_input">
+                                                <input class="contraseña" type="password" name="contraseña" id="contraseña_registrar" placeholder="Contraseña" minlength="6" required>
+                                            </div>
+                                            <div class="form_button">
+                                                <button class="btn-registrar" type="submit">Registrar</button>
+                                            </div>
+                                            <div class="form_input mt-2 text-center">
+                                                <label for="">¿Ya tienes una cuenta?</label>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#iniciosesion">Iniciar sesión</a>
+                                            </div>
+                                        </form>
+                                    </div>                          
+                                </div>
                             </div>
-                            <div class="form_button">
-                                <button class="button btn-iniciar" type="button">INICIAR SESIÓN</button>
-                            </div>
-                            <div class="form_button">
-                                <button class="button btn-crear" type="button" data-bs-toggle="modal" data-bs-target="#registrar">CREAR CUENTA</button>
-                            </div>
-                            <div class="form_button">
-                                <button class="button btn-transparente" type="button">¿OLVIDASTE TU CONTRASEÑA?</button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal Registrar -->
-        <div class="modal fade" id="registrar" tabindex="-1">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <a class="navbar-brand" href="index.html" id="logo"><img src="img/logo.png" alt="logo"></a>
-                        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form class="form_modal">
-                            <div class="form_input"><input type="text" placeholder="Nombres"></div>
-                            <div class="form_input"><input type="text" placeholder="Primer Apellido"></div>
-                            <div class="form_input"><input type="text" placeholder="Segundo Apellido"></div>
-
-                            <div class="form_input d-flex gap-2 align-items-center">
-                                <select class="form-select w-25">
-                                    <option disabled selected>Documento</option>
-                                    <option value="dni">DNI</option>
-                                    <option value="ce">CE</option>
-                                </select>
-                                <input type="text" class="w-75" placeholder="Número de documento">
-                            </div>
-
-                            <div class="form_input"><input type="date" placeholder="Fecha de nacimiento"></div>
-                            <div class="form_input"><input type="text" placeholder="Nacionalidad"></div>
-                            <div class="form_input"><input type="text" placeholder="Celular"></div>
-                            <div class="form_input"><input type="email" placeholder="Correo electrónico"></div>
-                            <div class="form_input"><input type="password" placeholder="Contraseña"></div>
-
-                            <div class="form_button"><button class="btn-registrar">Registrar</button></div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- ---------------- FIN HEADER ---------------- -->
-
-    <main class="container mt-4">
-    
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="img/promo4.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="img/promo2.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="img/promo3.png" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
-        <h1 class="promo-title">🔥 Promociones Exclusivas 🔥</h1>
-
-        <div class="row g-4">
-
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/promo1.jpg" alt="Promoción Bono de Bienvenida 150%"
-                        onerror="this.onerror=null; this.src='img/default.png';">
-                    <div class="promo-card-body">
-                        <h4>Bono de Bienvenida 150%</h4>
-                        <p>Duplica tu primer depósito y recibe giros gratis.</p>
-                        <button class="promo-btn">Reclamar Ahora</button>
+                        </div>
+                        <script>
+                            document.getElementById('registrar').addEventListener('hidden.bs.modal', function () {
+                                document.getElementById('formRegistro').reset();
+                            });
+                        </script>
+                        
                     </div>
                 </div>
+            </nav>
+        </header>
+        <main>
+            <img src="img/GENERAL XD.png" class="img-fluid" alt="...">
+
+        </main>
+        <footer>
+            <div class="footer-logo text-center"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
+            <div class="social-links text-center">
+                <a href="https://www.facebook.com/AtlanticCityPe" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/atlanticcasino__/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@atlanticcitysports?_t=8qnIHjkiRAE&_r=1" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
             </div>
-
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/promo2.png" alt="Promoción Cashback Semanal 20%"
-                    onerror="this.onerror=null; this.src='img/default.png';">>
-                    <div class="promo-card-body">
-                        <h4>Cashback Semanal 20%</h4>
-                        <p>Recupera el 20% de tus pérdidas cada semana.</p>
-                        <button class="promo-btn">Activar Cashback</button>
-                    </div>
-                </div>
+            <div class="creditos fin text-center">
+                Atlantic City
             </div>
-
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/promo3.png" alt="Promoción Giros Gratis Diario"
-                    onerror="this.onerror=null; this.src='img/default.png';">>
-                    <div class="promo-card-body">
-                        <h4>Giros Gratis Diario</h4>
-                        <p>Completa misiones para ganar giros gratis.</p>
-                        <button class="promo-btn">Ver Misiones</button>
-                    </div>
-                </div>
+            <div class="fin text-center">
+                2025 &copy; Todos los derechos reservados.                
             </div>
-
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/torneodeslots.png" alt="Promoción Torneo de Slots 50,000 puntos"
-                    onerror="this.onerror=null; this.src='img/default.png';">
-                    <div class="promo-card-body">
-                        <h4>Torneo de Slots – 50,000 puntos</h4>
-                        <p>Participa y escala posiciones para ganar premios en efectivo.</p>
-                        <button class="promo-btn">Participar</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/happyhour.png" alt="Promoción Happy Hour con giros gratis"
-                    onerror="this.onerror=null; this.src='img/default.png';">
-                    <div class="promo-card-body">
-                        <h4>Happy Hour – Giros Gratis</h4>
-                        <p>De 6pm a 8pm recibe 30 giros gratis en juegos seleccionados.</p>
-                        <button class="promo-btn">Activar</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/depositorelampago.png" alt="Promoción Depósito Relámpago 30% adicional"
-                    onerror="this.onerror=null; this.src='img/default.png';">
-                    <div class="promo-card-body">
-                        <h4>Depósito Relámpago +30%</h4>
-                        <p>Recibe un 30% adicional en tu primer depósito del día.</p>
-                        <button class="promo-btn">Reclamar</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/ruletadorada.png" alt="Promoción Ruleta Dorada diaria"
-                    onerror="this.onerror=null; this.src='img/default.png';">
-                    <div class="promo-card-body">
-                        <h4>Ruleta Dorada</h4>
-                        <p>Gira la ruleta cada 24 horas y gana premios instantáneos.</p>
-                        <button class="promo-btn">Girar ahora</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/bonovipexclusivo.png" alt="Promoción Bono VIP Exclusivo"
-                    onerror="this.onerror=null; this.src='img/default.png';"> 
-                    <div class="promo-card-body">
-                        <h4>Bono VIP Exclusivo</h4>
-                        <p>Recibe hasta S/500 semanales solo por ser jugador activo.</p>
-                        <button class="promo-btn">Unirme al VIP</button>
-                    </div>
-                </div>
-            </div>          
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="img/nochedejackpots.png" alt="Promoción Noche de Jackpots"
-                    onerror="this.onerror=null; this.src='img/default.png';">
-                    <div class="promo-card-body">
-                        <h4>Noche de Jackpots</h4>
-                        <p>Participa cada viernes y multiplica tus premios con botes acumulados especiales.</p>
-                        <button class="promo-btn">Participar Ahora</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-</div>
-
-<!-- Bootstrap script -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+        </footer>
+        <a href="#" class="flecha"><i><img src="img/flecha.png" alt="" width="50px"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
