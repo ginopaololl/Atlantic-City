@@ -539,3 +539,73 @@ footer{
     text-align: center;
     line-height: 50px;
 }
+
+/* ===================================================== */
+/*                Juego Responsable                      */
+/* ===================================================== */
+
+:root {
+    --ac-dark: #1c1c1c;
+    --ac-dark2: #2a2a2a;
+    --ac-dark3: #3a3a3a;
+    --ac-gold: #d4af37;
+    --ac-white: #e5e5e5;
+}
+
+.header-premium {
+    background: linear-gradient(135deg, #2e2e2e 0%, #1b1b1b 100%);
+    border-radius: 12px;
+    box-shadow: inset 0 0 25px rgba(0,0,0,0.7);
+}
+
+.main-title {
+    color: var(--ac-gold);
+    font-size: 2.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.neon-divider {
+    width: 180px;
+    height: 4px;
+    background: var(--ac-gold);
+    margin: 18px auto 0;
+    box-shadow: 0 0 10px var(--ac-gold), 0 0 20px var(--ac-gold);
+    border-radius: 50px;
+}
+
+.card-custom {
+    background: var(--ac-dark2);
+    border-left: 4px solid var(--ac-gold);
+    border-radius: 10px;
+    color: var(--ac-white);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.card-custom h3 {
+    color: var(--ac-gold);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon-gold {
+    color: var(--ac-gold);
+}
+
+/* Lista */
+.organizations li {
+    margin: 8px 0;
+}
+
+/* Email */
+.contact-email {
+    color: var(--ac-gold);
+    font-weight: bold;
+}
+
+/* ===================================================== */
+/*                xxxxxxxxxxxxxxxxxxx                    */
+/* ===================================================== */
