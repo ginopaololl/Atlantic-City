@@ -1301,3 +1301,204 @@ main::-webkit-scrollbar-thumb {
     padding: 5px 10px;
     vertical-align: middle;
 }
+/* ================================================= */
+/*           ESTILOS DEPORTES                        */
+/* ================================================= */
+
+
+/* ============================================================
+/*   CAJA PRINCIPAL (paneles, sidebar, tarjetas)
+/*   ============================================================ */
+.casino-box-deportes {
+    background: #1c1c1c;
+    border: 1px solid rgba(231, 196, 91, 0.35);
+    border-radius: 10px;
+    color: #ffffff;
+    box-shadow: 0 0 12px #00000055;
+}
+
+/* Tarjetas dentro */
+.match-card.casino-box-deportes {
+    background: #262626;
+    border: 1px solid rgba(231, 196, 91, 0.35);
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.match-card.casino-box-deportes:hover {
+    border-color: #e7c45b;
+    box-shadow: 0 0 12px #e7c45b40;
+}
+
+/* ============================================================
+/*   BARRAS Y LIVE
+/*   ============================================================ */
+.bar-accent-deportes {
+    width: 8px;
+    height: 40px;
+    background: #e7c45b;
+    border-radius: 4px;
+}
+
+.bar-live-deportes {
+    width: 8px;
+    height: 40px;
+    background: #ff3b30;
+    border-radius: 4px;
+}
+
+/* LIVE Badge */
+.live-badge-deportes {
+    background: #ff3b30;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    animation: pulseLive 1s infinite;
+}
+
+@keyframes pulseLive {
+    0% { opacity: 1; }
+    50% { opacity: .6; }
+    100% { opacity: 1; }
+}
+
+/* ============================================================
+/*   ODDS (cuotas)
+/*   ============================================================ */
+.odds-deportes {
+    background: #1b1b1b;
+    padding: 6px 12px;
+    border: 1px solid rgba(231, 196, 91, 0.35);
+    border-radius: 6px;
+    font-weight: 600;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+.odds-deportes:hover {
+    background: #e7c45b;
+    color: #000;
+    box-shadow: 0 0 10px #e7c45b50;
+}
+
+/* ============================================================
+/*   SIDEBAR
+/*   ============================================================ */
+.sidebar strong {
+    color: #e7c45b;
+}
+
+.sidebar a {
+    color: #ffffff !important;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    color: #e7c45b !important;
+}
+
+.sidebar small {
+    color: #cccccc;
+}
+
+/* ============================================================
+/*   PANEL PRINCIPAL
+/*   ============================================================ */
+.content-panel {
+    background: #1c1c1c;
+    border: 1px solid rgba(231, 196, 91, 0.35);
+    border-radius: 10px;
+    color: #ffffff;
+    box-shadow: 0 0 12px #00000055;
+}
+
+/* ============================================================
+/*   BOTONES ESPECIALES
+/*   ============================================================ */
+
+.btn-bono{
+    background: #b98f2c;
+    color: #000;
+    font-weight: 600;
+    transition: 0.2s;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-bono:hover {
+    background: #b98f2c;
+    color: #000;
+    box-shadow: 0 0 100px #e7c45b50;
+}
+
+.btn-deportes{
+    background: #1b1b1b;
+    padding: 6px 12px;
+    border: 1px solid rgba(231, 196, 91, 0.35);
+    border-radius: 6px;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+.btn-deportes:hover {
+    background: #b98f2c;
+    color: #000;
+}
+
+.pagination .page-item .page-link {
+    background: #262626;
+    border: 1px solid #444;
+    color: #eee;
+}
+
+.pagination .active .page-link {
+    background: #e7c45b;
+    border-color: #e7c45b;
+    color: #000;
+}
+
+.pagination .page-link:hover {
+    background: #e7c45b;
+    color: #000;
+}
+.footer-deportes{
+    background-color: transparent;
+}
+.titulo-deportes{
+    color: #e7c45b;
+}
+.eventos-deportes{
+    color: #e7c45b;
+}
+.text-muted-deportes{
+    color: #666;
+}
+
+.form-select-deportes{
+    background: #1b1b1b;
+    padding: 6px 12px;
+    border: 1px solid rgba(231, 196, 91, 0.35);
+    border-radius: 6px;
+    color: #ffffff;
+    transition: 0.2s;
+    height: 38px;
+    cursor: pointer;
+    appearance: none;
+}
+
+.form-select-deportes:hover{
+    background: #b98f2c;
+    color: #000;
+}
+.form-select-deportes:focus{
+    border-color: #d4af37;
+    box-shadow: none; 
+}
+.opcion-select{
+    background-color: #1b1b1b;
+    color: white;
+}
