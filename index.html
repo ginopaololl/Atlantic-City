@@ -42,7 +42,7 @@
                     <div class="d-flex align-items-center me-3">
                         <input class="form-control search-input" type="text" placeholder="Buscar juegos" aria-label="Buscar">
                     </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2" id="auth-buttons-container">
                         <button type="button" class="btn btn-outline-light btn-user" data-bs-toggle="modal" data-bs-target="#iniciosesion">Iniciar sesión</button>
                         <!-- Modal Iniciar sesion -->
                         <div class="modal fade" id="iniciosesion" tabindex="-1" aria-label="Iniciar sesión" aria-hidden="true">
@@ -53,12 +53,12 @@
                                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="form_modal">
+                                        <form class="form_modal" id="form-login">
                                             <div class="form_input">
-                                                <input class="usuario" type="text" name="usuario" id="usuario" placeholder="Usuario o correo electrónico">
+                                                <input class="usuario" type="text" name="usuario" id="login-user" placeholder="Usuario o correo electrónico" required>
                                             </div>
                                             <div class="form_input">
-                                                <input class="password" type="password" name="contraseña" id="contraseña_inicio_sesion" placeholder="Contraseña">
+                                                <input class="password" type="password" name="contraseña" id="login-pass" placeholder="Contraseña" required>
                                             </div>
                                             <div class="form-check d-flex align-items-center gap-2">
                                                 <input class="custom-check" type="checkbox" id="checkDefault">
@@ -67,7 +67,7 @@
                                                 </label>
                                             </div>
                                             <div class="form_button">
-                                                <button class="button btn-iniciar" type="button">INICIAR SESIÓN</button>
+                                                <button class="button btn-iniciar" type="submit">INICIAR SESIÓN</button>
                                             </div>
                                             <div class="form_button">
                                                 <button class="button btn-crear" type="button" onclick="cambiarModal('#iniciosesion', '#registrar')">CREAR CUENTA</button>
@@ -190,32 +190,248 @@
             </nav>
         </header>
         <main>
-            <img src="img/GENERAL XD.png" class="img-fluid" alt="...">
+        <!-- Hero Section Premium -->
+        <section id="hero-banner" class="position-relative w-100" style="height: 85vh; min-height: 600px; background: #000;">
+            <div class="hero-image-container w-100 h-100 overflow-hidden position-absolute top-0 start-0">
+                <!-- Imagen Principal con Fallback -->
+                <img src="img/GENERAL XD.png" 
+                     class="w-100 h-100" 
+                     style="object-fit: cover; object-position: center;"
+                     alt="Bienvenido a Atlantic City"
+                     onerror="this.onerror=null; this.src='img/banner default.png';">
+            </div>
+            
+            <!-- Overlay & Content -->
+            <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center p-3">
+                <div class="hero-content p-5 animated-hero" style="background: rgba(0,0,0,0.6); border: 1px solid var(--ac-gold); backdrop-filter: blur(5px); box-shadow: 0 0 50px rgba(0,0,0,0.8);">
+                    <img src="img/logo.png" alt="Atlantic City" style="max-width: 200px; filter: drop-shadow(0 0 10px #b98f2c);" class="mb-4">
+                    <h1 class="display-3 text-white fw-bold mb-3 text-uppercase" style="text-shadow: 2px 2px 10px #000; letter-spacing: 3px;">Experiencia de <span class="text-gold">Lujo</span></h1>
+                    <p class="lead text-light mb-4 fs-4" style="text-shadow: 1px 1px 5px #000;">Donde la emoción y la elegancia se encuentran</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <button class="btn btn-gold btn-lg px-5 py-3 rounded-pill text-uppercase fw-bold shadow-lg" onclick="document.querySelector('.btn-iniciar').click()">Jugar Ahora</button>
+                        <a href="promociones.html" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill text-uppercase fw-bold shadow-lg">Ver Promociones</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gradient Bottom Fade -->
+            <div class="position-absolute bottom-0 start-0 w-100" style="height: 150px; background: linear-gradient(to top, #000000 0%, transparent 100%);"></div>
+        </section>
+
+        <!-- Jackpot Section (Animated) -->
+        <section class="py-5 bg-black border-bottom border-warning border-opacity-25">
+            <div class="container text-center">
+                <h4 class="text-uppercase text-secondary mb-2" style="letter-spacing: 2px;">Jackpot Acumulado</h4>
+                <div class="display-2 fw-bold text-gold jackpot-counter" style="text-shadow: 0 0 20px rgba(252, 214, 46, 0.5);">
+                    S/ 1,245,890.50
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Games Grid -->
+        <section class="py-5" style="background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 text-white fw-bold mb-3">Juegos <span class="text-gold">Destacados</span></h2>
+                    <p class="text-secondary lead">Los títulos más emocionantes del momento.</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Game Card 1 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="game-card-premium position-relative overflow-hidden rounded-4">
+                            <img src="img/1juego.png" loading="lazy" class="w-100 h-100 object-fit-cover transition-transform" alt="Game 1" onerror="this.onerror=null; this.src='img/default.png';">
+                            <div class="game-overlay d-flex flex-column justify-content-center align-items-center">
+                                <h5 class="text-white mb-3 fw-bold">Bet Bonanza</h5>
+                                <button class="btn btn-gold rounded-pill px-4 fw-bold shadow">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Game Card 2 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="game-card-premium position-relative overflow-hidden rounded-4">
+                            <img src="img/2juego.png" loading="lazy" class="w-100 h-100 object-fit-cover transition-transform" alt="Game 2" onerror="this.onerror=null; this.src='img/default.png';">
+                            <div class="game-overlay d-flex flex-column justify-content-center align-items-center">
+                                <h5 class="text-white mb-3 fw-bold">Top Slots</h5>
+                                <button class="btn btn-gold rounded-pill px-4 fw-bold shadow">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Game Card 3 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="game-card-premium position-relative overflow-hidden rounded-4">
+                            <img src="img/3juego.png" loading="lazy" class="w-100 h-100 object-fit-cover transition-transform" alt="Game 3" onerror="this.onerror=null; this.src='img/default.png';">
+                            <div class="game-overlay d-flex flex-column justify-content-center align-items-center">
+                                <h5 class="text-white mb-3 fw-bold">Roulette Pro</h5>
+                                <button class="btn btn-gold rounded-pill px-4 fw-bold shadow">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Game Card 4 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="game-card-premium position-relative overflow-hidden rounded-4">
+                            <img src="img/4juego.png" loading="lazy" class="w-100 h-100 object-fit-cover transition-transform" alt="Game 4" onerror="this.onerror=null; this.src='img/default.png';">
+                            <div class="game-overlay d-flex flex-column justify-content-center align-items-center">
+                                <h5 class="text-white mb-3 fw-bold">Lucky Seven</h5>
+                                <button class="btn btn-gold rounded-pill px-4 fw-bold shadow">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Game Card 5 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="game-card-premium position-relative overflow-hidden rounded-4">
+                            <img src="img/5juego.png" loading="lazy" class="w-100 h-100 object-fit-cover transition-transform" alt="Game 5" onerror="this.onerror=null; this.src='img/default.png';">
+                            <div class="game-overlay d-flex flex-column justify-content-center align-items-center">
+                                <h5 class="text-white mb-3 fw-bold">Blackjack VIP</h5>
+                                <button class="btn btn-gold rounded-pill px-4 fw-bold shadow">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Game Card 6 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="game-card-premium position-relative overflow-hidden rounded-4">
+                            <img src="img/6juego.png" loading="lazy" class="w-100 h-100 object-fit-cover transition-transform" alt="Game 6" onerror="this.onerror=null; this.src='img/default.png';">
+                            <div class="game-overlay d-flex flex-column justify-content-center align-items-center">
+                                <h5 class="text-white mb-3 fw-bold">Mega Win</h5>
+                                <button class="btn btn-gold rounded-pill px-4 fw-bold shadow">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Game Card 7 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="game-card-premium position-relative overflow-hidden rounded-4">
+                            <img src="img/7juego.png" loading="lazy" class="w-100 h-100 object-fit-cover transition-transform" alt="Game 7" onerror="this.onerror=null; this.src='img/default.png';">
+                            <div class="game-overlay d-flex flex-column justify-content-center align-items-center">
+                                <h5 class="text-white mb-3 fw-bold">Poker Star</h5>
+                                <button class="btn btn-gold rounded-pill px-4 fw-bold shadow">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Game Card 8 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="game-card-premium position-relative overflow-hidden rounded-4">
+                            <img src="img/8juego.png" loading="lazy" class="w-100 h-100 object-fit-cover transition-transform" alt="Game 8" onerror="this.onerror=null; this.src='img/default.png';">
+                            <div class="game-overlay d-flex flex-column justify-content-center align-items-center">
+                                <h5 class="text-white mb-3 fw-bold">Golden Slots</h5>
+                                <button class="btn btn-gold rounded-pill px-4 fw-bold shadow">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <a href="casino.html" class="btn btn-outline-light px-5 py-3 rounded-pill text-uppercase fw-bold border-2">Ver Todos los Juegos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIP Experience Section -->
+        <section class="py-5 position-relative overflow-hidden">
+            <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden" style="z-index: -1;">
+                 <!-- Background con fallback a banner default si promo no existe o es fea -->
+                <img src="img/bonovipexclusivo.png" class="w-100 h-100" style="object-fit: cover; filter: brightness(0.3);" alt="VIP BG" onerror="this.src='img/banner default.png'"> 
+            </div>
+            
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h2 class="display-4 text-white fw-bold mb-4">Membresía <span class="text-gold">VIP Elite</span></h2>
+                        <ul class="list-unstyled text-light fs-5">
+                            <li class="mb-3"><i class="fa-solid fa-crown text-gold me-3"></i> Bonos Exclusivos Semanales</li>
+                            <li class="mb-3"><i class="fa-solid fa-gem text-gold me-3"></i> Gestor de Cuenta Personal</li>
+                            <li class="mb-3"><i class="fa-solid fa-bolt text-gold me-3"></i> Retiros Prioritarios</li>
+                            <li class="mb-3"><i class="fa-solid fa-ticket text-gold me-3"></i> Invitaciones a Eventos Privados</li>
+                        </ul>
+                        <button class="btn btn-gold btn-lg mt-4 shadow-lg rounded-pill" onclick="document.querySelector('.btn-iniciar').click()">Únete al Club</button>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="img/ruletadorada.png" class="img-fluid rounded-4 shadow-lg border border-warning" style="max-height: 400px;" alt="VIP" onerror="this.src='img/default.png'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <!-- Chat Widget -->
+            <button id="chat-widget-btn" class="chat-widget-btn">
+                <i class="fa-solid fa-comments"></i> Chat Soporte
+            </button>
+            <div id="chat-window" class="chat-window">
+                <div class="chat-header">
+                    <h5><i class="fa-solid fa-headset me-2"></i> Soporte en Línea</h5>
+                    <button id="chat-close-btn" class="btn-close btn-close-white"></button>
+                </div>
+                <div class="chat-body" id="chat-body">
+                    <div class="message moderator">
+                        <div class="message-info">Sistema</div>
+                        ¡Hola! Bienvenido a Atlantic City. ¿En qué podemos ayudarte hoy?
+                    </div>
+                </div>
+                <div class="chat-footer">
+                    <input type="text" id="chat-input" class="chat-input" placeholder="Escribe tu consulta...">
+                    <button id="chat-send-btn" class="chat-send-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
 
         </main>
         <footer>
-            <div class="footer-logo text-center"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
-            <div class="social-links text-center">
-                <a href="https://www.facebook.com/AtlanticCityPe" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/atlanticcasino__/" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@atlanticcitysports?_t=8qnIHjkiRAE&_r=1" target="_blank">
-                    <i class="fab fa-tiktok"></i>
-                </a>
+            <div class="footer-content">
+                <!-- Columna 1: Info y Pagos -->
+                <div class="footer-col">
+                    <div class="footer-logo mb-3"><a href="index.html"><img src="img/logo.png" alt="" width="140"></a></div>
+                    <p>Atlantic City es el centro de entretenimiento más grande de Perú. Disfruta de la mejor experiencia de casino online con seguridad y confianza.</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fab fa-cc-amex" title="Amex"></i>
+                        <i class="fa-brands fa-bitcoin" title="Bitcoin"></i>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces -->
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <div class="footer-links">
+                        <a href="casino.html">Juegos de Casino</a>
+                        <a href="promociones.html">Promociones y Bonos</a>
+                        <a href="juego_responsable.html">Juego Responsable</a>
+                        <a href="#">Términos y Condiciones</a>
+                        <a href="#">Política de Privacidad</a>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Social y Seguridad -->
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-links mb-4" style="text-align: left; margin-bottom: 20px;">
+                        <a href="https://www.facebook.com/AtlanticCityPe" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/atlanticcasino__/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@atlanticcitysports?_t=8qnIHjkiRAE&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <h4>Juego Seguro</h4>
+                    <div class="footer-legal-logos" style="justify-content: start;">
+                        <span class="legal-badge text-center"><i class="fa-solid fa-lock"></i> SSL<br>SECURE</span>
+                        <span class="legal-badge text-center"><i class="fa-solid fa-ban"></i> +18<br>SOLO ADULTOS</span>
+                    </div>
+                </div>
             </div>
-            <div class="creditos fin text-center">
-                Atlantic City
-            </div>
-            <div class="fin text-center">
-                2025 &copy; Todos los derechos reservados.                
+
+            <!-- Barra Inferior -->
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2025 Atlantic City. Todos los derechos reservados. Lima, Perú.
+                    <!-- Enlace Disimulado -->
+                    <a href="moderador.html" class="admin-secret-link" title="Acceso Corporativo"><i class="fa-solid fa-key"></i> Corp. Login</a>
+                </p>
             </div>
         </footer>
-        <a href="#" class="flecha"><i><img src="img/flecha.png" alt="" width="50px"></i></a>
+        <a href="#" class="flecha"><i class="fa-solid fa-chevron-up"></i></a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/chat_client.js"></script>
 </body>
 </html>
 

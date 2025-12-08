@@ -283,8 +283,31 @@
                 2025 &copy; Todos los derechos reservados.                
             </div>
         </footer>
-        <a href="#" class="flecha"><i><img src="img/flecha.png" alt="" width="50px"></i></a>
+        <a href="#" class="flecha"><i class="fa-solid fa-chevron-up"></i></a>
+        <!-- Chat Widget -->
+        <button id="chat-widget-btn" class="chat-widget-btn">
+            <i class="fa-solid fa-comments"></i> Chat Soporte
+        </button>
+        <div id="chat-window" class="chat-window">
+            <div class="chat-header">
+                <h5><i class="fa-solid fa-headset me-2"></i> Soporte en Línea</h5>
+                <button id="chat-close-btn" class="btn-close btn-close-white"></button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message moderator">
+                    <div class="message-info">Sistema</div>
+                    ¡Hola! Bienvenido a Atlantic City. ¿En qué podemos ayudarte hoy?
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Escribe tu consulta...">
+                <button id="chat-send-btn" class="chat-send-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="js/chat_client.js"></script>
 </body>
 </html>

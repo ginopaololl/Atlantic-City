@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bet Bonanza - Atlantic City</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Estilos Específicos para la Tragamonedas */
+        .slot-machine-container {
+            background: linear-gradient(145deg, #111, #222);
+            border: 4px solid #b98f2c;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(185, 143, 44, 0.2);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .slot-window {
+            background-color: #000;
+            border: 2px solid #555;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            height: 200px;
+            position: relative;
+        }
+
+        .reel {
+            width: 30%;
+            height: 100%;
+            background-color: #eee;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reel-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.1s linear;
+        }
+
+        .reel.spinning .reel-content {
+            filter: blur(5px);
+        }
+
+        .control-panel {
+            background: #222;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid #b98f2c;
+        }
+
+        .balance-display {
+            font-family: 'Courier New', monospace;
+            color: #fcd62e;
+            font-size: 1.2rem;
+            background: #000;
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+
+        .spin-btn {
+            background: linear-gradient(to bottom, #fcd62e, #b98f2c);
+            border: none;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 10px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(252, 214, 46, 0.4);
+            transition: 0.2s;
+        }
+
+        .spin-btn:active {
+            transform: scale(0.95);
+        }
+
+        .spin-btn:disabled {
+            filter: grayscale(1);
+            cursor: not-allowed;
+        }
+        
+        .win-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            color: #fcd62e;
+            padding: 20px;
+            border: 2px solid #fcd62e;
+            border-radius: 10px;
+            font-size: 2rem;
+            font-weight: bold;
+            z-index: 100;
+            display: none;
+            text-align: center;
+            box-shadow: 0 0 50px #fcd62e;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: translate(-50%, -50%) scale(0); }
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/Logo.png" alt="" width="150" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05"
+                aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> <i class="fa fa-home"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="casino.html"> <i class="fa fa-dice"></i> Casino</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promociones.html"> <i class="fa fa-gift"></i> Promociones</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="balance-display me-3" id="global-balance">
+                        S/. 1000.00
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 80px;">
+        
+        <div class="slot-machine-container">
+            <div class="text-center mb-4">
+                <h1 class="text-gold display-6">BET BONANZA</h1>
+                <p class="text-muted mb-0">¡Alinea 3 símbolos iguales para ganar!</p>
+            </div>
+
+            <div class="slot-window">
+                <div class="reel" id="reel-1"><div class="reel-content">🍒</div></div>
+                <div class="reel" id="reel-2"><div class="reel-content">🍋</div></div>
+                <div class="reel" id="reel-3"><div class="reel-content">🍇</div></div>
+            </div>
+
+            <div class="win-display" id="win-message">
+                ¡GANASTE!
+                <div class="fs-4 text-white mt-2">+ S/. 50.00</div>
+            </div>
+
+            <div class="control-panel">
+                <div>
+                    <span class="text-muted small d-block">Apuesta</span>
+                    <span class="text-white fw-bold">S/. 5.00</span>
+                </div>
+                <button class="spin-btn" id="spin-btn" onclick="spin()">
+                    <i class="fa fa-sync-alt me-2"></i> GIRAR
+                </button>
+                <div>
+                    <span class="text-muted small d-block">Ganancia</span>
+                    <span class="text-gold fw-bold" id="last-win">S/. 0.00</span>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="casino.html" class="btn btn-outline-secondary btn-sm rounded-pill px-4">
+                    <i class="fa fa-arrow-left me-1"></i> Volver al Casino
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // --- LOGICA DE TRAGAMONEDAS ---
+        const symbols = ['🍒', '🍋', '🍇', '💎', '7️⃣', '🔔'];
+        let balance = 1000.00;
+        const betCost = 5.00;
+        let isSpinning = false;
+        
+        const reel1 = document.querySelector('#reel-1 .reel-content');
+        const reel2 = document.querySelector('#reel-2 .reel-content');
+        const reel3 = document.querySelector('#reel-3 .reel-content');
+        const balanceDisplay = document.getElementById('global-balance');
+        const spinBtn = document.getElementById('spin-btn');
+        const winDisplay = document.getElementById('win-message');
+        const lastWinDisplay = document.getElementById('last-win');
+
+        // Cargar saldo de localStorage si existe (simulado global)
+        if(localStorage.getItem('userBalance')) {
+            balance = parseFloat(localStorage.getItem('userBalance'));
+        }
+        updateBalance();
+
+        function spin() {
+            if (isSpinning || balance < betCost) {
+                if(balance < betCost) alert("Saldo insuficiente");
+                return;
+            }
+
+            // Deducir apuesta
+            balance -= betCost;
+            updateBalance();
+            isSpinning = true;
+            spinBtn.disabled = true;
+            winDisplay.style.display = 'none';
+
+            // Animación
+            let interval = setInterval(() => {
+                reel1.innerText = getRandomSymbol();
+                reel2.innerText = getRandomSymbol();
+                reel3.innerText = getRandomSymbol();
+            }, 100);
+
+            // Parar rodillos uno por uno
+            setTimeout(() => {
+                clearInterval(interval);
+                const results = [getRandomSymbol(), getRandomSymbol(), getRandomSymbol()];
+                
+                // Efecto de parada
+                reel1.innerText = results[0];
+                setTimeout(() => {
+                    reel2.innerText = results[1];
+                     setTimeout(() => {
+                        reel3.innerText = results[2];
+                        isSpinning = false;
+                        spinBtn.disabled = false;
+                        checkWin(results);
+                     }, 500);
+                }, 500);
+
+            }, 1000);
+        }
+
+        function getRandomSymbol() {
+            return symbols[Math.floor(Math.random() * symbols.length)];
+        }
+
+        function checkWin(results) {
+            if (results[0] === results[1] && results[1] === results[2]) {
+                // GANADOR
+                let winAmount = 50; 
+                if(results[0] === '7️⃣') winAmount = 500; // Jackpot
+                else if(results[0] === '💎') winAmount = 200;
+                
+                balance += winAmount;
+                updateBalance();
+                
+                // Mostrar UI
+                winDisplay.innerHTML = `¡GANASTE!<div class="fs-4 text-white mt-2">+ S/. ${winAmount.toFixed(2)}</div>`;
+                winDisplay.style.display = 'block';
+                lastWinDisplay.innerText = "S/. " + winAmount.toFixed(2);
+                
+                // Guardar en Storage
+                localStorage.setItem('userBalance', balance);
+            }
+        }
+
+        function updateBalance() {
+            balanceDisplay.innerText = "S/. " + balance.toFixed(2);
+            localStorage.setItem('userBalance', balance);
+        }
+    </script>
+</body>
+</html>

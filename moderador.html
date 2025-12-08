@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Moderador | Atlantic City</title>
+    <!-- Estilos base -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="shortcut icon" href="img/icono.ico" type="image/x-icon">
+</head>
+<body class="moderator-body">
+
+    <!-- LOGIN SECTION -->
+    <div id="login-section" class="d-flex justify-content-center align-items-center vh-100">
+        <div class="login-card p-5 rounded shadow-lg">
+            <div class="text-center mb-4">
+                <img src="img/logo.png" alt="Logo" width="150" class="mb-3 rounded">
+                <h2 class="text-gold">Acceso Moderador</h2>
+                <p class="login-subtitle">Ingresa tus credenciales para gestionar el contenido.</p>
+            </div>
+            <form id="admin-login-form">
+                <div class="mb-3">
+                    <label for="admin-user" class="form-label text-white">Correo Corporativo</label>
+                    <input type="email" class="form-control bg-dark text-white border-secondary" id="admin-user" placeholder="ejemplo@atlanticcity.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="admin-pass" class="form-label text-white">Contraseña</label>
+                    <input type="password" class="form-control bg-dark text-white border-secondary" id="admin-pass" required>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-gold fw-bold">INGRESAR</button>
+                    <button type="button" class="btn btn-outline-light btn-sm mt-2" id="btn-show-register">Registrar Nuevo Moderador</button>
+                </div>
+            </form>
+            
+            <!-- Register Form (Hidden initially) -->
+            <form id="admin-register-form" class="d-none mt-4">
+                <h4 class="text-gold text-center mb-3">Nuevo Registro</h4>
+                
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label class="form-label text-white">Nombres</label>
+                        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Tus nombres" id="reg-name" required>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label text-white">Apellidos</label>
+                        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Tus apellidos" id="reg-lastname" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Correo Corporativo</label>
+                    <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="nombre@atlanticcity.com" id="reg-email" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label class="form-label text-white">Cargo</label>
+                        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Ej: Gerente" id="reg-job" required>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label text-white">Teléfono</label>
+                        <input type="tel" class="form-control bg-dark text-white border-secondary" placeholder="999 999 999" id="reg-phone" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label class="form-label text-white">Doc.</label>
+                        <select class="form-select bg-dark text-white border-secondary" id="reg-doc-type">
+                            <option value="DNI">DNI</option>
+                            <option value="CE">CE</option>
+                        </select>
+                    </div>
+                    <div class="col-8 mb-3">
+                        <label class="form-label text-white">Número Documento</label>
+                        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="12345678" id="reg-doc-num" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Contraseña</label>
+                    <input type="password" class="form-control bg-dark text-white border-secondary" placeholder="******" id="reg-pass" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-white">Código Maestro (Requerido)</label> <!-- CODIGO MAESTRO 0000 -->
+                    <input type="password" class="form-control bg-dark text-white border-secondary" id="reg-master-code" required>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-gold fw-bold">REGISTRARSE</button>
+                    <button type="button" class="btn btn-link text-white btn-sm" id="btn-show-login">Volver al Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DASHBOARD SECTION (Hidden by default) -->
+    <div id="dashboard-section" class="d-none">
+        <!-- Sidebar -->
+        <div class="d-flex">
+            <nav class="sidebar p-3 bg-darker vh-100 text-white" style="width: 280px; position:fixed;">
+                <div class="text-center mb-4">
+                    <img src="img/logo.png" alt="Atlantic City" width="150" class="rounded">
+                    <h5 class="mt-3 text-gold">Panel Admin</h5>
+                </div>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active text-white" onclick="switchTab('inicio')">
+                            <i class="fa-solid fa-house me-2"></i> Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white" onclick="switchTab('casino')">
+                            <i class="fa-solid fa-dice me-2"></i> Casino
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white" onclick="switchTab('promociones')">
+                            <i class="fa-solid fa-gift me-2"></i> Promociones
+                        </a>
+                    </li>
+                    <!-- Tab exclusivo Gerente -->
+                    <li id="nav-item-equipo" class="nav-item d-none">
+                        <a href="#" class="nav-link text-white" onclick="switchTab('equipo')">
+                            <i class="fa-solid fa-users me-2"></i> Equipo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white" onclick="switchTab('chat')">
+                            <i class="fa-solid fa-headset me-2"></i> Atención al Cliente
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>Moderador</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#" id="btn-logout">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="flex-grow-1 p-5" style="margin-left: 280px; background-color: #1a1a1a; min-height: 100vh; color: white;">
+                
+                <!-- Tab: Inicio -->
+                <div id="tab-inicio" class="dashboard-tab">
+                    <h2 class="text-gold mb-4">Gestión de Página Principal</h2>
+                    <div class="card bg-dark border-secondary mb-4">
+                        <div class="card-header border-secondary">Banner Principal</div>
+                        <div class="card-body">
+                            <form onsubmit="saveChanges(event, 'Inicio')">
+                                <div class="mb-3">
+                                    <label class="form-label">Título del Banner</label>
+                                    <input type="text" class="form-control bg-secondary text-white border-0" value="Bienvenido al Mejor Casino">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Imagen de Fondo (URL)</label>
+                                    <input type="file" class="form-control bg-secondary text-white border-0">
+                                </div>
+                                <button type="submit" class="btn btn-gold">Guardar Cambios</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Casino -->
+                <div id="tab-casino" class="dashboard-tab d-none">
+                    <h2 class="text-gold mb-4">Gestión de Casino</h2>
+                    <div class="card bg-dark border-secondary mb-4">
+                        <div class="card-header border-secondary">Agregar Nuevo Juego</div>
+                        <div class="card-body">
+                            <form onsubmit="saveChanges(event, 'Casino')">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Nombre del Juego</label>
+                                        <input type="text" class="form-control bg-secondary text-white border-0">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Categoría</label>
+                                        <select class="form-select bg-secondary text-white border-0">
+                                            <option>Slots</option>
+                                            <option>Ruleta</option>
+                                            <option>Blackjack</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Imagen Miniatura</label>
+                                        <input type="file" class="form-control bg-secondary text-white border-0">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-gold">Publicar Juego</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <h4 class="mt-4">Juegos Activos</h4>
+                    <table class="table table-dark table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>Super Ace</td>
+                                <td>Slots</td>
+                                <td><span class="badge bg-success">Activo</span></td>
+                                <td><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>002</td>
+                                <td>Roulette Royale</td>
+                                <td>Ruleta</td>
+                                <td><span class="badge bg-success">Activo</span></td>
+                                <td><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Tab: Promociones -->
+                <div id="tab-promociones" class="dashboard-tab d-none">
+                    <h2 class="text-gold mb-4">Gestión de Promociones</h2>
+                    <div class="card bg-dark border-secondary mb-4">
+                        <div class="card-header border-secondary">Nueva Promoción</div>
+                        <div class="card-body">
+                            <form onsubmit="saveChanges(event, 'Promociones')">
+                                <div class="mb-3">
+                                    <label class="form-label">Título de la Promo</label>
+                                    <input type="text" class="form-control bg-secondary text-white border-0">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Descripción</label>
+                                    <textarea class="form-control bg-secondary text-white border-0" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Imagen Banner</label>
+                                    <input type="file" class="form-control bg-secondary text-white border-0">
+                                </div>
+                                <button type="submit" class="btn btn-gold">Crear Promoción</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Equipo (Solo Gerente) -->
+                <div id="tab-equipo" class="dashboard-tab d-none">
+                    <h2 class="text-gold mb-4">Gestión de Equipo</h2>
+                    <div class="card bg-dark border-secondary">
+                        <div class="card-header border-secondary">Moderadores Activos</div>
+                        <div class="card-body">
+                            <table class="table table-dark table-hover" id="team-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Cargo</th>
+                                        <th>Correo</th>
+                                        <th>Teléfono</th>
+                                        <th>Fecha Ingreso</th>
+                                        <th>Estado</th>
+                                        <th>Última Actividad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Se llena con JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Chat Soporte -->
+                <div id="tab-chat" class="dashboard-tab d-none">
+                    <h2 class="text-gold mb-4">Atención al Cliente</h2>
+                    <div class="card bg-dark border-secondary" style="height: 600px;">
+                        <div class="card-header border-secondary d-flex justify-content-between align-items-center">
+                            <span><i class="fa-solid fa-comments me-2"></i> Panel de Soporte en Vivo</span>
+                            <button id="refresh-chat-btn" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-sync"></i> Actualizar</button>
+                        </div>
+                        <div class="card-body p-0 d-flex">
+                            <!-- Sidebar de Sesiones -->
+                            <div class="col-4 border-end border-secondary d-flex flex-column bg-black">
+                                <div class="p-3 border-bottom border-secondary">
+                                    <h6 class="text-muted text-uppercase small mb-0">Chats Activos</h6>
+                                </div>
+                                <div id="chat-session-list" class="flex-grow-1 overflow-auto p-2">
+                                    <!-- Lista de usuarios generada por JS -->
+                                    <div class="text-center text-muted mt-4 small">Esperando chats...</div>
+                                </div>
+                            </div>
+
+                            <!-- Area de Mensajes -->
+                            <div class="col-8 d-flex flex-column bg-dark position-relative">
+                                <!-- Banner de chat actual -->
+                                <div id="current-chat-header" class="p-3 bg-secondary bg-opacity-10 border-bottom border-secondary d-none">
+                                    <strong class="text-white" id="current-chat-user">Usuario</strong>
+                                    <span class="badge bg-warning text-dark ms-2" id="current-chat-id">ID</span>
+                                </div>
+
+                                <div id="admin-chat-body" class="flex-grow-1 overflow-auto p-3" style="background-color: #111;">
+                                    <div class="h-100 d-flex align-items-center justify-content-center text-muted">
+                                        <div class="text-center">
+                                            <i class="fa-solid fa-comment-slash fa-3x mb-3 opacity-25"></i>
+                                            <p>Selecciona un chat para comenzar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="p-3 border-top border-secondary bg-black">
+                                    <div class="d-flex gap-2">
+                                        <input type="text" id="admin-chat-input" class="form-control bg-dark text-white border-secondary" placeholder="Escribir respuesta..." disabled>
+                                        <button id="admin-chat-send" class="btn btn-gold" disabled>Enviar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/moderador.js"></script>
+</body>
+</html>
