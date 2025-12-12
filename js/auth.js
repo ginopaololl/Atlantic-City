@@ -81,6 +81,16 @@ function handleLogin(e) {
     const validUser = users.find(u => u.email === emailUser && u.pass === pass);
 
     if(validUser) {
+        // Actualizar ultima conexion
+        validUser.lastLogin = new Date().toISOString();
+        
+        // Actualizar en el array principal
+        const userIndex = users.findIndex(u => u.email === emailUser);
+        if(userIndex !== -1) {
+            users[userIndex] = validUser;
+            localStorage.setItem('clientUsers', JSON.stringify(users));
+        }
+
         // Iniciar Sesion
         localStorage.setItem('currentUser', JSON.stringify(validUser));
         
@@ -127,7 +137,10 @@ function checkLoginState() {
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                         <li class="px-3 py-2 border-bottom border-secondary">
                             <small class="text-muted">Balance</small><br>
-                            <span class="text-warning fw-bold">S/. ${localStorage.getItem('userBalance') || '1000.00'}</span>
+                            <span class="text-warning fw-bold fs-5">S/. ${localStorage.getItem('userBalance') || '1000.00'}</span>
+                            <button class="btn btn-sm btn-success w-100 mt-2" onclick="showDepositModal()">
+                                <i class="fa-solid fa-wallet"></i> Recargar
+                            </button>
                         </li>
                         <li><a class="dropdown-item" href="#"><i class="fa fa-user me-2"></i> Mi Perfil</a></li>
                         <li><a class="dropdown-item" href="#"><i class="fa fa-history me-2"></i> Historial</a></li>
@@ -136,6 +149,9 @@ function checkLoginState() {
                     </ul>
                 </div>
             `;
+            
+            // Inject Modal if not exists
+            injectDepositModal();
         }
     }
 }
@@ -172,6 +188,107 @@ function requireAuth(actionName) {
         return false;
     }
     return true;
+}
+
+// --- PAYMENT SYSTEM ---
+
+function injectDepositModal() {
+    if(document.getElementById('depositModal')) return;
+
+    const modalHTML = `
+        <div class="modal fade" id="depositModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark text-white border-warning">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title text-gold"><i class="fa-solid fa-wallet"></i> Recargar Saldo</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Selecciona Método de Pago</label>
+                            <div class="d-flex gap-2 mb-3">
+                                <button class="btn btn-outline-light flex-fill active-method" onclick="selectMethod(this, 'VISA')"><i class="fa-brands fa-cc-visa fa-lg"></i></button>
+                                <button class="btn btn-outline-light flex-fill" onclick="selectMethod(this, 'MASTERCARD')"><i class="fa-brands fa-cc-mastercard fa-lg"></i></button>
+                                <button class="btn btn-outline-light flex-fill" onclick="selectMethod(this, 'YAPE')"><i class="fa-solid fa-qrcode fa-lg"></i> Yape</button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Monto a Recargar (S/.)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-secondary text-white border-0">S/.</span>
+                                <input type="number" id="depositAmount" class="form-control bg-secondary text-white border-0" placeholder="Ej: 100.00" min="10">
+                            </div>
+                            <small class="text-muted">Mínimo: S/. 10.00</small>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-gold text-dark fw-bold" onclick="processDeposit()">
+                                <i class="fa-solid fa-check-circle"></i> Confirmar Recarga
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    // Style helper for method selection
+    window.selectMethod = function(btn, method) {
+        document.querySelectorAll('.active-method').forEach(b => b.classList.remove('active', 'border-warning'));
+        btn.classList.add('active', 'border-warning');
+        btn.classList.add('active-method');
+        // Store selected method if needed
+    }
+}
+
+window.showDepositModal = function() {
+    const modal = new bootstrap.Modal(document.getElementById('depositModal'));
+    modal.show();
+}
+
+window.processDeposit = function() {
+    const amountInput = document.getElementById('depositAmount');
+    const amount = parseFloat(amountInput.value);
+
+    if(!amount || amount < 10) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Monto Inválido',
+            text: 'El monto mínimo es de S/. 10.00'
+        });
+        return;
+    }
+
+    // Simulate Processing
+    const modalEl = document.getElementById('depositModal');
+    const modalInstance = bootstrap.Modal.getInstance(modalEl);
+    modalInstance.hide();
+
+    Swal.fire({
+        title: 'Procesando Pago...',
+        html: 'Conectando con la pasarela segura.',
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    }).then(() => {
+        // Success
+        const currentBalance = parseFloat(localStorage.getItem('userBalance') || '1000.00');
+        const newBalance = (currentBalance + amount).toFixed(2);
+        
+        localStorage.setItem('userBalance', newBalance);
+        
+        Swal.fire({
+            icon: 'success',
+            title: '¡Recarga Exitosa!',
+            text: `Se han añadido S/. ${amount.toFixed(2)} a tu cuenta.`,
+            confirmButtonColor: '#fcd62e',
+            confirmButtonText: '<span style="color:black">Aceptar</span>'
+        }).then(() => {
+            location.reload();
+        });
+    });
 }
 
 // Auto-open login if param exists

@@ -266,8 +266,46 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hooks por tab
         if(tabName === 'chat') {
             loadAdminChat();
+        } else if (tabName === 'usuarios') {
+            loadUsers();
         }
     };
+
+    // --- CARGAR USUARIOS (CLIENTES) ---
+    window.loadUsers = function() {
+        const users = JSON.parse(localStorage.getItem('clientUsers')) || [];
+        const tbody = document.getElementById('users-table-body');
+        if(!tbody) return;
+
+        tbody.innerHTML = '';
+        
+        if(users.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No hay usuarios registrados</td></tr>';
+            return;
+        }
+
+        users.forEach(u => {
+            const row = `
+                <tr>
+                    <td>
+                        <div class="fw-bold">${u.nombres} ${u.apellidos || ''}</div>
+                        <small class="text-muted"><i class="fa-solid fa-envelope"></i> ${u.email}</small>
+                    </td>
+                    <td>
+                        <span class="badge bg-secondary">${u.docType || 'DNI'}</span> ${u.docNum}
+                    </td>
+                    <td>${u.celular || '-'}</td>
+                    <td>${new Date(u.fechaRegistro).toLocaleDateString()}</td>
+                    <td>
+                        ${u.lastLogin 
+                            ? `<span class="text-success"><i class="fa-solid fa-check-circle"></i> ${new Date(u.lastLogin).toLocaleString()}</span>` 
+                            : '<span class="text-secondary">Nunca</span>'}
+                    </td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+    }
 
     // --- CHAT MODERADOR PRO (MULTI-CLIENTE) ---
     let chatRefreshInterval = null;
